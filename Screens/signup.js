@@ -1,0 +1,158 @@
+import {
+    SafeAreaView,
+    Image,
+    StyleSheet,
+    Text,
+    View,
+    TextInput,
+    TouchableOpacity,
+    Alert,
+  } from "react-native";
+  import React, { useState } from "react";
+  
+  export default function App() {
+    const [form, setForm] = useState({
+      email: "",
+      password: "",
+    });
+    return (
+      <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
+        <View style={styles.container}>
+          <View style={styles.header}>
+            <Image
+              source={require("../assets/complete.png")}
+              style={styles.headerImg}
+              alt="Logo"
+            />
+            <Text style={styles.title}>Omini App</Text>
+            <Text style={styles.subtitle}>
+              Let's come together to share experiences
+            </Text>
+          </View>
+          <View style={styles.form}>
+            <View style={styles.input}>
+              {/* <Text style={styles.inputLabel}>Email Address</Text> */}
+              <TextInput
+              autoCapitalize="none"
+              autoCorrect={false}
+              keyboardType="email-address"
+                style={styles.inputControl}
+                value={form.email}
+                placeholder="Username"
+                onChangeText={(email) => setForm({ ...form, email })}
+              />
+            </View>
+            <View style={styles.input}>
+              {/* <Text style={styles.inputLabel}>Password</Text> */}
+              <TextInput
+                secureTextEntry
+                style={styles.inputControl}
+                value={form.password}
+                placeholder="School Email"
+                onChangeText={(password) => setForm({ ...form, password })}
+              />
+            </View>
+            <View style={styles.input}>
+              {/* <Text style={styles.inputLabel}>Password</Text> */}
+              <TextInput
+                secureTextEntry
+                style={styles.inputControl}
+                value={form.password}
+                placeholder="Password"
+                onChangeText={(password) => setForm({ ...form, password })}
+              />
+            </View>
+            
+            <TouchableOpacity style={{marginTop: 'auto'}}
+            onPress={() => {
+              //handle on press
+            }}>
+              <Text style={styles.formfooter}>Already have an account? 
+                <Text style={{color:'#075eec'}}> Log in</Text>
+              </Text>
+            </TouchableOpacity>
+            <View style={styles.formAction}>
+              <TouchableOpacity onPress={() => {
+                //Handel on press action
+                Alert.alert('Sucessfully logged in!')
+              }}>
+                <View style={styles.btn}>
+                  <Text style={styles.btnText}>Sign In</Text>
+                </View>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </SafeAreaView>
+    );
+  }
+  
+  const styles = StyleSheet.create({
+    container: {
+      padding: 24,
+      flex: 1,
+    },
+    headerImg: {
+      width: 120,
+      height: 120,
+      alignSelf: "center",
+    },
+    title: {
+      fontSize: 27,
+      fontWeight: "700",
+      color: "black",
+      textAlign: "center",
+    },
+    subtitle: {
+      fontSize: 15,
+      fontWeight: "500",
+      color: "#000",
+      textAlign: "center",
+      marginTop: 12
+    },
+    input: {
+      marginBottom: 16,
+    },
+    inputLabel: {
+      fontSize: 17,
+      fontWeight: "600",
+      marginBottom: 8,
+    },
+    inputControl: {
+      height: 54,
+      backgroundColor: "#fff",
+      paddingVertical: 0,
+      paddingHorizontal: 20,
+      borderRadius: 7,
+      borderStyle:  'solid',
+      borderWidth: 2,
+      borderColor: '#B2ACAC',
+      fontSize: 15,
+      fontWeight: "500",
+    },
+    form:{
+      marginTop:54,
+      flex: 1
+    },
+    formAction:{
+      marginVertical: 24
+    },
+    formfooter:{
+      textAlign: 'center',
+    },
+    btn:{
+      backgroundColor: '#075eec',
+      borderRadius: 8,
+      borderWidth: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      paddingVertical: 10,
+      paddingHorizontal: 20,
+    },
+    btnText:{
+      fontSize: 18,
+      fontWeight: '600',
+      color: '#fff'
+    }
+  });
+  
